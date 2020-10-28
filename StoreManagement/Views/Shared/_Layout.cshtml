@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h4 class="text-white">The Main Intention - To Perform the Simple CURD Operation Using ASP.NET MVC</h4>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav mr-auto text-left">
+                    <li class="nav-item">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>                    
+                    </li>
+                </ul>
+                @if (Session["UserName"] != null)
+                {
+                    <ul class="navbar-nav mr-auto text-left">
+                        <li class="nav-item">
+                            <h4 class="text-white"><span class="navbar-brand">Welcome @Session["UserName"]</span>@Html.ActionLink("Store Inventory Application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</h4>
+                        </li>
+                    </ul>
+                  
+                    <ul class="navbar-nav text-right">
+                        <li class="nav-item">
+                            <span class="text-muted">@Html.ActionLink("Vilage", "Index", "Vilage")</span>
+                            <span class="text-muted">@Html.ActionLink("LogOut", "LogOut", "Account")</span>
+                        </li>
+                    </ul>
+
+                }
+                else
+                {
+
+                    <span class="text-muted">@Html.ActionLink("Login", "Login", "Account")</span>
+
+                }
+
+            </div>
+</nav>
+    </div>
+    <br />
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+@*<ul class="navbar-nav">
+    <li class="nav-item">
+        <h4 class="text-white"> @Html.ActionLink("Store Inventory", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</h4>
+    </li>
+    <li class="nav-item">
+            <span class="text-muted">@Html.ActionLink("Vilage", "Index", "Vilage")</span>
+        </li>
+        <li class="nav-item">
+            <span class="text-muted">@Html.ActionLink("Login", "Login", "Account")</span>
+        </li>
+        <li class="nav-item">
+            <span class="text-muted">Welcome @Session["UserName"]</span>
+        </li>
+        <li class="nav-item">
+            <span class="text-muted">@Html.ActionLink("LogOut", "LogOut", "Account")</span>
+        </li>
+
+</ul>*@

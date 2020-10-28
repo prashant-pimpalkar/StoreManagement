@@ -1,0 +1,32 @@
+﻿@model IEnumerable<StoreManagement.Models.VilageInfo>
+
+<h5 class="text-center">List Of Vilages</h5>
+
+<div class="container">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th class="">
+                    @Html.DisplayNameFor(model => model.VilageName)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VilageName)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Add", "AddVilage", new { id = item.Id }) |
+                        @Html.ActionLink("Edit", "EditVilage", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "DeleteVilage", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+</table>
+</div>
